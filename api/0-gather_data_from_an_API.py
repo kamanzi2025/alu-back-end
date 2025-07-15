@@ -35,7 +35,7 @@ def gather_data_from_an_API(employee_id):
         print("Error fetching user data: {}".format(e))
         sys.exit(1)
     except ValueError:
-        print("Error: Could not decode JSON response for user data.")
+        print("Error: Could not decode JSON response for user data.") # <-- ENSURE NO TRAILING WHITESPACE HERE
         sys.exit(1)
 
     if not user_data:
@@ -44,7 +44,9 @@ def gather_data_from_an_API(employee_id):
 
     employee_name = user_data.get("name")
     if employee_name is None:
-        print("Error: Employee name not found for user ID {}.".format(employee_id))
+        # Line 47 fix: breaking the long string, check indentation carefully
+        print("Error: Employee name not found for user ID {}."
+              .format(employee_id))
         sys.exit(1)
 
     # Fetch user's TODO list
@@ -57,6 +59,8 @@ def gather_data_from_an_API(employee_id):
         print("Error fetching TODOs data: {}".format(e))
         sys.exit(1)
     except ValueError:
+        # Line 53 fix: (same as line 53 in your error, which is 58 here)
+        # Re-check this line for trailing whitespace after `.`
         print("Error: Could not decode JSON response for TODOs data.")
         sys.exit(1)
 
@@ -74,7 +78,9 @@ def gather_data_from_an_API(employee_id):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
+        # Line 85 fix: (same as line 85 in your error)
+        # No trailing whitespace after the final `>` or `)`
+        print("Usage: python3 0-gather_data_from_an_API.py <employee_id>") # <-- ENSURE NO TRAILING WHITESPACE HERE
         sys.exit(1)
 
     try:
@@ -82,4 +88,4 @@ if __name__ == "__main__":
         gather_data_from_an_API(employee_id)
     except ValueError:
         print("Error: Employee ID must be an integer.")
-        sys.exit(1) 
+        sys.exit(1)
