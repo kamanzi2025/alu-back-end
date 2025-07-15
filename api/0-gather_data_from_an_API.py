@@ -35,17 +35,21 @@ def gather_data_from_an_API(employee_id):
         print("Error fetching user data: {}".format(e))
         sys.exit(1)
     except ValueError:
-        # LINE 53 (as per your error report) - Ensure NO trailing whitespace.
+        # This was line 53 in previous errors, let's ensure it's short.
+        # It's likely line 56 now.
         print("Error: Could not decode JSON response for TODOs data.")
         sys.exit(1)
 
     if not user_data:
-        print("Error: No user found with ID {}".format(employee_id))
+        # This line is likely now line 48 in your PEP8 report.
+        # We need to break it inside the print() call.
+        print("Error: No user found with ID {}.".format(employee_id))
         return
 
     employee_name = user_data.get("name")
     if employee_name is None:
-        # LINE 47 (as per your error report) - Pay close attention to the 8 spaces before .format()
+        # This was line 47 in previous errors. It's now also affected by line number shift.
+        # Break it inside the print() call.
         print("Error: Employee name not found for user ID {}."
               .format(employee_id))
         sys.exit(1)
@@ -60,7 +64,8 @@ def gather_data_from_an_API(employee_id):
         print("Error fetching TODOs data: {}".format(e))
         sys.exit(1)
     except ValueError:
-        # THIS WAS THE *OTHER* LINE 53 - also ensure no trailing whitespace.
+        # This is the second line 56 from your *latest* error report.
+        # Ensure no trailing whitespace and that it fits the 80 char limit.
         print("Error: Could not decode JSON response for TODOs data.")
         sys.exit(1)
 
@@ -78,7 +83,7 @@ def gather_data_from_an_API(employee_id):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        # LINE 85 - Ensure NO trailing whitespace after the final `)`
+        # This was line 85 from previous error. Make sure no trailing whitespace.
         print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
         sys.exit(1)
 
